@@ -17,10 +17,26 @@ function Signup() {
           console.log(values);
         }}
       >
-        {({ handleSubmit, handleChange, values }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          values,
+          errors,
+          touched,
+        }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="email">Email</label>
-            <input name="email" value={values.email} onChange={handleChange} />
+            <input
+              name="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+
+            {errors.email && touched.email && (
+              <div className="error">{errors.email}</div>
+            )}
 
             <br />
             <br />
@@ -29,7 +45,12 @@ function Signup() {
               name="password"
               value={values.password}
               onChange={handleChange}
+              onBlur={handleBlur}
             />
+            <br />
+            {errors.password && touched.password && (
+              <div className="error">{errors.password}</div>
+            )}
 
             <br />
             <br />
@@ -38,7 +59,12 @@ function Signup() {
               name="passwordConfirm"
               value={values.passwordConfirm}
               onChange={handleChange}
+              onBlur={handleBlur}
             />
+            <br />
+            {errors.passwordConfirm && touched.passwordConfirm && (
+              <div className="error">{errors.passwordConfirm}</div>
+            )}
 
             <br />
             <br />
